@@ -11,11 +11,16 @@ class TextDisplay extends Component {
     };
   }
 
+  deleteLetter() {
+    this.setState({
+      textDisplay: this.state.textDisplay.substring(0, this.state.textDisplay.length -1)
+    })
+  }
+
   handleChange(e) {
     this.setState({
       textDisplay: e.target.value
     })
-    console.log(e.target.value);
   }
 
   render() {
@@ -27,7 +32,7 @@ class TextDisplay extends Component {
           value={this.state.textDisplay}
           onChange={this.handleChange.bind(this)}
         />
-        <TextDisplayed text={this.state.textDisplay} />
+        <TextDisplayed text={this.state.textDisplay} deleteLetterFunc={this.deleteLetter.bind(this)}/>
       </div>
     )
   }
